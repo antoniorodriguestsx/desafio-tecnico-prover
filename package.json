@@ -48,14 +48,40 @@
     "tailwind-variants": "^0.1.20"
   },
   "devDependencies": {
+    "@testing-library/jest-native": "^5.4.3",
+    "@testing-library/react-native": "^13.3.3",
+    "@types/jest": "^30.0.0",
     "@types/node": "^25.5.0",
     "@types/react": "~19.1.0",
     "babel-plugin-module-resolver": "^5.0.0",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~10.0.0",
+    "jest": "^30.3.0",
+    "jest-expo": "^55.0.11",
+    "node-fetch": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.17",
-    "typescript": "~5.9.2"
+    "typescript": "~5.9.2",
+    "whatwg-fetch": "^3.6.20"
+  },
+  "jest": {
+    "preset": "jest-expo/node",
+    "testMatch": [
+      "**/mocks/__tests__/**/*.test.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      ".*setup\\.helper\\.ts$"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!miragejs)"
+    ]
   },
   "private": true
 }
