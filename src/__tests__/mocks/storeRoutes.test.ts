@@ -1,5 +1,5 @@
-import { makeTestServer } from '../testSetup';
-import { StoreAttrs } from '../types';
+import { makeTestServer } from '../../mocks/testSetup';
+import { StoreAttrs } from '../../mocks/types';
 
 let server: ReturnType<typeof makeTestServer>;
 
