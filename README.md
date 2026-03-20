@@ -1,50 +1,89 @@
-# Welcome to your Expo app 👋
+# Desafio Técnico – React Native (Expo)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+App mobile para cadastro e controle de lojas e produtos, desenvolvido com Expo e React Native.
 
-## Get started
+---
 
-1. Install dependencies
+## Versões utilizadas
 
-   ```bash
-   npm install
-   ```
+| Ferramenta | Versão |
+|---|---|
+| Node.js | 20.19.x |
+| Expo SDK | 54 |
+| React | 19.1.0 |
+| React Native | 0.81.5 |
+| Expo Router | 6.x |
+| Gluestack UI | 3.x |
+| Zustand | 5.x |
+| MirageJS | 0.1.48 |
+| TypeScript | 5.9.x |
+| Jest | 30.x |
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Instalação e execução
 
 ```bash
-npm run reset-project
+# Instalar dependências
+npm install
+
+# Iniciar o projeto
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Escaneie o QR code com o Expo Go ou pressione `a` para Android / `i` para iOS.
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+## Mock de back-end
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+O mock é iniciado automaticamente junto com o app. O MirageJS intercepta as requisições e simula os seguintes endpoints:
 
-## Join the community
+```
+GET    /stores
+POST   /stores
+PUT    /stores/:id
+DELETE /stores/:id
 
-Join our community of developers creating universal apps.
+GET    /stores/:storeId/products
+POST   /products
+PUT    /products/:id
+DELETE /products/:id
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+
+## Testes
+
+```bash
+# Rodar todos os testes
+npm test
+
+# Modo watch
+npm run test:watch
+```
+
+---
+
+## Funcionalidades
+
+- Listagem, cadastro, edição e exclusão de lojas
+- Listagem, cadastro, edição e exclusão de produtos por loja
+- Busca e filtro em tempo real
+- Validação de formulários
+- Pull-to-refresh
+
+---
+
+## Estrutura do projeto
+
+```
+src/
+├── app/              # Telas (Expo Router)
+├── components/       # Componentes reutilizáveis
+├── mocks/            # Mock de backend (MirageJS)
+├── services/         # Camada de comunicação com a API
+├── stores/           # Estado global (Zustand)
+├── types/            # Tipagens TypeScript
+└── __tests__/        # Testes unitários
+```

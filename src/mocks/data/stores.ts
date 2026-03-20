@@ -1,4 +1,4 @@
-import { Store } from '@/types/stores';
+import { Store } from '@/types/store';
 
 export let stores: Store[] = [
   {

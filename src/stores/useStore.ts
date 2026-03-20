@@ -9,7 +9,7 @@ type StoreState = {
   error: string | null;
 
   fetchStores: () => Promise<void>;
-  fetchStoreById: (id: string) => Promise<void>;
+  fetchStoreById: (id: string) => Promise<Store | undefined>;
   createStore: (data: CreateStoreDTO) => Promise<void>;
   updateStore: (id: string, data: UpdateStoreDTO) => Promise<void>;
   removeStore: (id: string) => Promise<void>;
@@ -17,7 +17,7 @@ type StoreState = {
   clearError: () => void;
 };
 
-export const useStoreStore = create<StoreState>((set) => ({
+export const useStore = create<StoreState>((set) => ({
   stores: [],
   selectedStore: null,
   isLoading: false,
@@ -40,6 +40,7 @@ export const useStoreStore = create<StoreState>((set) => ({
     try {
       const store = await storeService.getById(id);
       set({ selectedStore: store });
+      return store;
     } catch (e: any) {
       set({ error: e.message });
     } finally {
